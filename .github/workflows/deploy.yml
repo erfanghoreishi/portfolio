@@ -20,12 +20,12 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             if [ ! -d "/home/ubuntu/portfolio/.git" ]; then
-              git clone https://github.com/erfanghoreishi/portfolio.git
+              git clone https://github.com/erfanghoreishi/portfolio.git /home/ubuntu/portfolio
             fi
 
             cd /home/ubuntu/portfolio
-            git reset --hard
-            git pull origin main
+            git fetch origin main
+            git reset --hard origin/main
 
             # Ensure deployment directory exists
             if [ ! -d "/home/ubuntu/ghoreishi.dev" ]; then
@@ -37,6 +37,4 @@ jobs:
             sudo cp -r * /home/ubuntu/ghoreishi.dev/
 
             # Reload nginx
-            sudo systemctl reload nginx
-
             sudo systemctl reload nginx
