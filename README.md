@@ -1,40 +1,53 @@
-# Portfolio — Erfan Ghoreishi
+# Portfolio
 
-Single-page portfolio website built with pure HTML5, CSS3 and vanilla JavaScript. Designed for a clean, corporate-professional aesthetic suitable for UK financial-sector graduate applications.
+Single-page site for backend engineering portfolio. Static HTML/CSS/JS.
 
-**Live:** [ghoreishi.dev](https://ghoreishi.dev) *(after deployment)*
+**Live:** [ghoreishi.dev](https://ghoreishi.dev)
 
 ---
 
-## Quick Start
+## Tech Stack
+
+- HTML5
+- CSS3 (grid, flexbox)
+- Vanilla JavaScript
+- Nginx
+- GitHub Actions
+- AWS EC2
+
+---
+
+## Local Development
 
 ```bash
-# Clone
 git clone https://github.com/erfanghoreishi/portfolio.git
 cd portfolio
-
-# Open in browser
-open index.html          # macOS
-xdg-open index.html      # Linux
-start index.html         # Windows
+open index.html
 ```
 
-No build step required — it's pure HTML/CSS/JS.
+No build step. Edit files directly.
 
 ---
 
-## Customise Content
+## Deployment
 
-Replace the placeholder tags in `index.html`:
+Auto-deploys to EC2 on push to `main` via GitHub Actions.
 
-| Placeholder | Replace with |
-|---|---|
-| `[YOUR_EMAIL]` | Your email address |
-| `[YOUR_DEGREE]` | e.g. *BSc Computer Science* |
-| `[YOUR_UNIVERSITY]` | e.g. *University of London* |
-| `[YOUR_GRAD_YEAR]` | e.g. *2025* |
+**Workflow** (`.github/workflows/deploy.yml`):
+1. Clone/pull latest changes to `/home/ubuntu/portfolio`
+2. Sync files to `/var/www/ghoreishi.dev` (excludes `.git`, `.github`)
+3. Reload Nginx
 
-Also drop your CV PDF into `assets/resume.pdf`.
+**Required secrets** (GitHub → Settings → Secrets):
+- `EC2_HOST` — server IP
+- `EC2_USER` — SSH user (e.g., `ubuntu`)
+- `EC2_SSH_KEY` — private key
+
+**Server setup:**
+```bash
+# Nginx serves from /var/www/ghoreishi.dev
+# SSL via Certbot (Let's Encrypt)
+```
 
 ---
 
@@ -42,77 +55,15 @@ Also drop your CV PDF into `assets/resume.pdf`.
 
 ```
 portfolio/
-├── index.html          # Main HTML file (all sections)
-├── css/
-│   └── styles.css      # All styles (mobile-first responsive)
-├── js/
-│   └── main.js         # Smooth scroll, mobile menu, active nav
-├── assets/
-│   └── resume.pdf      # Your CV (replace with yours)
-└── README.md
+├── index.html
+├── css/styles.css
+├── js/main.js
+├── assets/resume.pdf
+└── .github/workflows/deploy.yml
 ```
 
 ---
 
-## Deploy to Firebase Hosting
-
-### 1. Install Firebase CLI
-
-```bash
-npm install -g firebase-tools
-firebase login
-```
-
-### 2. Initialise Firebase in the project
-
-```bash
-firebase init hosting
-```
-
-When prompted:
-- **Public directory:** `.` (current directory — the HTML is at root)
-- **Configure as single-page app?** No
-- **Overwrite index.html?** No
-
-### 3. Deploy
-
-```bash
-firebase deploy
-```
-
-Your site will be live at `https://<project-id>.web.app`.
-
-### 4. Connect custom domain (`ghoreishi.dev`)
-
-1. Go to [Firebase Console → Hosting](https://console.firebase.google.com/)
-2. Click **Add custom domain**
-3. Enter `ghoreishi.dev`
-4. Add the DNS `TXT` and `A` records to your domain registrar
-5. Firebase provisions an SSL certificate automatically (may take up to 24 hours)
-
-### 5. Enable HTTPS
-
-Firebase Hosting serves everything over HTTPS by default — no extra steps needed.
-
-### 6. Update content without redeploying the whole project
-
-```bash
-# Edit index.html (or CSS/JS), then:
-firebase deploy --only hosting
-```
-
----
-
-## Technology
-
-- HTML5 (semantic, accessible)
-- CSS3 (custom properties, grid, flexbox)
-- Vanilla JavaScript (no dependencies)
-- Google Fonts (Inter)
-- Font Awesome 6 (icons via CDN)
-
----
-
-## Licence
+## License
 
 MIT © 2026 Erfan Ghoreishi
