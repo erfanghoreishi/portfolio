@@ -1,0 +1,253 @@
+:root {
+  --bg:     #FAF6F0;
+  --text:   #1E1608;
+  --muted:  #4A3C28;
+  --accent: #7A5C10;
+  --mono:   'JetBrains Mono', 'Fira Mono', monospace;
+  --max-w:  720px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--mono);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── WRAP ── */
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── NAV ── */
+.site-nav {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 1rem 2rem;
+  z-index: 100;
+}
+
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.nav-brand {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+.nav-brand:hover { text-decoration: none; }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+.nav-links a {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ── HERO ── */
+.hero-section {
+  padding: 5rem 2rem 4rem;
+}
+
+.prompt {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.hero-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.25rem;
+}
+
+.hero-title {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.hero-rule {
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0;
+  margin: 1.25rem 0;
+  white-space: pre;
+  overflow: hidden;
+  user-select: none;
+}
+
+.hero-bio {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+.hero-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.hero-links a {
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+/* ── SECTIONS ── */
+.content-section {
+  padding: 3rem 2rem;
+}
+
+.section-heading {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.1rem;
+}
+
+.section-underline {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  user-select: none;
+  white-space: pre;
+  overflow: hidden;
+}
+
+.section-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.about-text {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.95;
+  max-width: 600px;
+  margin-bottom: 1rem;
+}
+
+/* ── PROJECT LIST ── */
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.project-name-line {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.project-year {
+  font-size: 0.78rem;
+  color: var(--muted);
+  flex-shrink: 0;
+  min-width: 2.5rem;
+}
+
+a.project-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+a.project-name:hover {
+  color: var(--text);
+}
+
+.project-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.75;
+  padding-left: 3.75rem;
+  margin-bottom: 0.3rem;
+}
+.project-desc em { font-style: italic; }
+
+.project-links {
+  padding-left: 3.75rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.project-links a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.project-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── CONTACT ── */
+.contact-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contact-row {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.85rem;
+}
+
+.contact-key {
+  color: var(--accent);
+  font-weight: 700;
+  min-width: 100px;
+  flex-shrink: 0;
+}
+
+.contact-val { color: var(--muted); }
+
+/* ── FOOTER ── */
+.site-footer {
+  padding: 3rem 2rem 2rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.site-footer a { color: var(--muted); }
+.site-footer a:hover { color: var(--accent); }
+
+/* ── RESPONSIVE ── */
+/* sections need top offset so sticky nav doesn't cover headings */
+.content-section,
+.hero-section {
+  scroll-margin-top: 48px;
+}
+
+@media (max-width: 560px) {
+  .nav-links a:not(:last-child) { display: none; }
+  .project-date { margin-left: 0; width: 100%; }
+}
