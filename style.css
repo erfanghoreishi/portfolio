@@ -248,6 +248,7 @@ a.project-name:hover {
 }
 
 @media (max-width: 560px) {
-  .nav-links a:not(:last-child) { display: none; }
-  .project-date { margin-left: 0; width: 100%; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.7rem; }
+  .project-year { margin-left: 0; width: 100%; }
 }
